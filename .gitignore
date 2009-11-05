@@ -1,7 +1,9 @@
 *.geany
-*Makefile*
+Makefile*
 vorgabe1/Makefile
 vorgabe1/build/
 bochs/
 boot/
 bochsout.txt
+parport.out
+tools/build/
