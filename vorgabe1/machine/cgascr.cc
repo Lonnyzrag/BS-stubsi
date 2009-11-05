@@ -35,7 +35,7 @@ void CGA_Screen::getpos (int &x, int &y){
     int cursorpos;                      // cursorpos variable
 
     indexReg.outb(14);                  // IndexRegister auf Port 14 setzen
-    cursorpos = datReg.inb();           // einlesen des Inhalts vom Datenregister
+    cursorpos = dataReg.inb();           // einlesen des Inhalts vom Datenregister
     cursorpos = (cursorpos << 8);       // linksshift, damit auf niederes Byte zugegriffen werden kann
     indexReg.outb(15);
     cursorpos = cursorpos | dataReg.inb();  // einlesen und verknuepfen (Addition) der beiden Inhalte
