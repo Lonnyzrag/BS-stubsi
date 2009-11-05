@@ -12,9 +12,9 @@ l/*---------------------------------------------------------------------------*
 const int spalte = 80;           // Spalten 0 <= x <= 79 */
 const int zeile = 25;            // Zeilene 0 <= y <= 24 */
 char* const grakaoffset = (char*) 0xb8000;  // Initialisieren graka Ram Startadresse
-const IO_Port indexreg = 3d4;   /* Initialisieren des Indexregisters Port 3d4
+const IO_Port indexreg = 0x3d4;   /* Initialisieren des Indexregisters Port 3d4
                                  *  (nur schreiben) */
-const IO_Port datareg = 3d5;	/* initialisieren des Datenregisters Port 3d5
+const IO_Port datareg = 0x3d5;	/* initialisieren des Datenregisters Port 3d5
                                  * lesen und schreiben */
 
 /* ToDo: insert sourcecode */ 
