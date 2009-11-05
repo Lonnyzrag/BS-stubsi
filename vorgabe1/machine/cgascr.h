@@ -16,7 +16,7 @@
 class CGA_Screen {
  
 public:
-
+void show (int x, int y, char c, unsigned char attrib)
   /**
    * Method setpos() sets a new position for the screen cursor.
    *
@@ -32,6 +32,7 @@ public:
    * @param y reference for row number of curent position
    */
   /* ToDo: insert sourcecode */ 
+  void getpos (int &x, int &y)
 
   /**
    * Method show() displays a character at a given position using the 
