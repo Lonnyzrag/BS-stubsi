@@ -16,7 +16,7 @@
 class CGA_Screen {
  
 public:
-void show (int x, int y, char c, unsigned char attrib)
+void show (int x, int y, char c, unsigned char attrib);
   /**
    * Method setpos() sets a new position for the screen cursor.
    *
