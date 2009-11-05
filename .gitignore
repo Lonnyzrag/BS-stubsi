@@ -1,5 +1,5 @@
 *.geany
 *Makefile*
 vorgabe1/Makefile
-vorgabe1/build/*
-bochs/*
+vorgabe1/build/
+bochs/
