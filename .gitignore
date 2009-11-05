@@ -3,3 +3,5 @@
 vorgabe1/Makefile
 vorgabe1/build/
 bochs/
+boot/
+bochsout.txt
