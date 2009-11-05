@@ -31,10 +31,9 @@ ASM    = nasm
 CC     = gcc
 CXX    = g++
 DELETE = rm
-LD     = ld 
+LD     = ld
 OBJCP  = objcopy
 TCC    = gcc
-LDFLAGS = -melf_i386
 
 ifeq ($(GENSYS),Linux)
 ifneq ($(shell uname),$(GENSYS))
@@ -49,7 +48,7 @@ LDHEAD = $(shell $(CXX) --print-file-name=crti.o && $(CXX) --print-file-name=crt
 LDTAIL = $(shell $(CXX) --print-file-name=crtend.o && $(CXX) --print-file-name=crtn.o)
 else
 DRIVE  = a:
-
+LDHEAD = $(shell $(CXX) --print-file-name=crtbegin.o)
 LDTAIL = $(shell $(CXX) --print-file-name=crtend.o)
 C_SOURCES += ../inifini/inifini.c
 endif
