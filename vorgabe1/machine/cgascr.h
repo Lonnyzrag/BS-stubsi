@@ -34,7 +34,7 @@ public:
    * @param y reference for row number of curent position
    */
   /* ToDo: insert sourcecode */ 
- // void getpos (int &x, int &y);
+  void getpos (int &x, int &y);
 
   /**
    * Method show() displays a character at a given position using the 
