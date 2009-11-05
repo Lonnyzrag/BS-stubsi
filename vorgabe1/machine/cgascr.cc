@@ -25,12 +25,24 @@ void CGA_Screen::show (int x, int y, char c, unsigned char attrib){
     grakaoffset [verschiebung] = c;             // c in Adresse schreiben
     grakaoffset [verschiebung + 1] = attrib;    // attrib in ungerade Adresse schreiben
 }
-/*
-void CGA_Screen::setpos (int x, int y){   
-} */
-/*
+
+/*void CGA_Screen::setpos (int x, int y){
+    int cursorpos;
+
+    indexReg.outb(14);
+*/
 void CGA_Screen::getpos (int &x, int &y){
-} */
+    int cursorpos;                      // cursorpos variable
+
+    indexReg.outb(14);                  // IndexRegister auf Port 14 setzen
+    cursorpos = datReg.inb();           // einlesen des Inhalts vom Datenregister
+    cursorpos = (cursorpos << 8);       // linksshift, damit auf niederes Byte zugegriffen werden kann
+    indexReg.outb(15);
+    cursorpos = cursorpos | dataReg.inb();  // einlesen und verknuepfen (Addition) der beiden Inhalte
+
+    x = cursorpos % spalte;             // Berechnung des Restes um x-Pos anzugeben (Spalte)
+    y = cursorpos / spalte;             // bestimmen der Zeile
+} 
 /*
 void CGA_Screen::print (char* text, int length, unsigned char attrib){
 } */
