@@ -34,6 +34,8 @@ DELETE = rm
 LD     = ld
 OBJCP  = objcopy
 TCC    = gcc
+LDFLAGS = -melf_i386
+
 
 ifeq ($(GENSYS),Linux)
 ifneq ($(shell uname),$(GENSYS))
