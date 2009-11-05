@@ -26,12 +26,13 @@ void CGA_Screen::show (int x, int y, char c, unsigned char attrib){
     grakaoffset [verschiebung + 1] = attrib;    // attrib in ungerade Adresse schreiben
 }
 
-
+/*
 void CGA_Screen::setpos (int x, int y){
     int cursorpos;						// Cursorpos Variable
 
     indexreg.outb(14);					//
 }
+*/
 
 
 void CGA_Screen::getpos (int &x, int &y){
