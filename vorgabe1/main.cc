@@ -5,6 +5,7 @@
  
 int main() {
    keyoutput.show(5,0, (char)65, (unsigned char) 15);
+   getpos ();
   
    
   return 0;

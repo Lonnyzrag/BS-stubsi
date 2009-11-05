@@ -25,7 +25,8 @@ public:
    * @param x column number of new position 
    * @param y row number of new position
    */
-  /* ToDo: insert sourcecode */ 
+  /* ToDo: insert sourcecode */   
+  void setpos (int x, int y);
 
   /**
    * Method getpos() gets the current position of the screen cursor.
