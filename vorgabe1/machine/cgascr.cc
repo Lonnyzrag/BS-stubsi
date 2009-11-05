@@ -34,11 +34,11 @@ void CGA_Screen::show (int x, int y, char c, unsigned char attrib){
 void CGA_Screen::getpos (int &x, int &y){
     int cursorpos;                      // cursorpos variable
 
-    indexReg.outb(14);                  // IndexRegister auf Port 14 setzen
-    cursorpos = dataReg.inb();           // einlesen des Inhalts vom Datenregister
+    indexreg.outb(14);                  // IndexRegister auf Port 14 setzen
+    cursorpos = datareg.inb();           // einlesen des Inhalts vom Datenregister
     cursorpos = (cursorpos << 8);       // linksshift, damit auf niederes Byte zugegriffen werden kann
-    indexReg.outb(15);
-    cursorpos = cursorpos | dataReg.inb();  // einlesen und verknuepfen (Addition) der beiden Inhalte
+    indexreg.outb(15);
+    cursorpos = cursorpos | datareg.inb();  // einlesen und verknuepfen (Addition) der beiden Inhalte
 
     x = cursorpos % spalte;             // Berechnung des Restes um x-Pos anzugeben (Spalte)
     y = cursorpos / spalte;             // bestimmen der Zeile
