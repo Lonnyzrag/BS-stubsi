@@ -1,4 +1,4 @@
-l/*---------------------------------------------------------------------------*
+/*---------------------------------------------------------------------------*
  * Operating Systems I                                                       *
  *---------------------------------------------------------------------------*
  *                                                                           *
@@ -31,7 +31,7 @@ void CGA_Screen::show (int x, int y, char c, unsigned char attrib){
 
     indexReg.outb(14);
 */
-void CGA_Screen::getpos (int &x, int &y){
+/*void CGA_Screen::getpos (int &x, int &y){
     int cursorpos;                      // cursorpos variable
 
     indexReg.outb(14);                  // IndexRegister auf Port 14 setzen
@@ -42,7 +42,7 @@ void CGA_Screen::getpos (int &x, int &y){
 
     x = cursorpos % spalte;             // Berechnung des Restes um x-Pos anzugeben (Spalte)
     y = cursorpos / spalte;             // bestimmen der Zeile
-} 
+} */
 /*
 void CGA_Screen::print (char* text, int length, unsigned char attrib){
 } */
