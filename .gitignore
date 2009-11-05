@@ -7,3 +7,4 @@ boot/
 bochsout.txt
 parport.out
 tools/build/
+bochs/*
