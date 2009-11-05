@@ -1,2 +1,3 @@
 *.geany
 vorgabe*/Makefile
+vorgabe*/build/*
