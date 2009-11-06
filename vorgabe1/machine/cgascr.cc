@@ -79,6 +79,7 @@ void CGA_Screen::print (char* text, int length, unsigned char attrib){
 				 * Versuch:
 				 * if (text[i] == '/' && text[i+1] == n) {
 						 * x=0; y++; i=i+2;} else {  //else schließen nicht vergessen!
+					* Achtung!!! lauf Marcus: \n ist als Steuerzeichen hinterlegt (char == 10 oder char =='\n')
 					*/
 					show (x, y, text[i], attrib);	// Zeichen an Pos schreiben
 					x++;			// ein zeichen weiter rücken
@@ -88,4 +89,6 @@ void CGA_Screen::print (char* text, int length, unsigned char attrib){
 			}
 		} 
 	}
+//void CGA_Screen::scrollup(int anzahl);
+	
 }
