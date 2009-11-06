@@ -55,6 +55,32 @@ void CGA_Screen::getpos (int &x, int &y){
     x = cursorpos % spalte;             // Berechnung des Restes um x-Pos anzugeben (Spalte)
     y = cursorpos / spalte;             // bestimmen der Zeile
 } 
-/*
+
 void CGA_Screen::print (char* text, int length, unsigned char attrib){
-} */
+        // prüfen ob innerhalb der Grenzen
+        // getpos
+        // zeichen schreiben
+        // setpos (getpos+1)
+	int x, y;
+	getpos(x,y);
+	int maxspalte = spalte -1;
+	if ( y < 0 )
+		y = 0;
+	if ( x < 0 )
+		x = 0;
+		
+    for ( int i = 0; i < length; i++ ){
+		if ( x >= maxspalte ) {
+			x=0;  
+			y++;
+		} else {
+			if ( x >= 0 && x < spalte && y >= 0 && y < zeile ){
+				show (x, y, text[i], attrib);
+				x++;
+				setpos(x,y);
+			}else {
+				show(79, 0, '$', 15);
+			}
+		} 
+	}
+}

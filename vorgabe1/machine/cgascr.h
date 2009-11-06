@@ -57,6 +57,7 @@ public:
    * @param attrib display attributs
    */
   /* ToDo: insert sourcecode */ 
+  void print (char* text, int length, unsigned char attrib);
 
   /**
    * Method scrollup() scrolls the screen one row up. 
