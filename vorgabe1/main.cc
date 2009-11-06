@@ -18,7 +18,7 @@ int main() {
 	//print (char* 'Dies ist ein Text!',(int) 18, (unsigned char) 15){
    
    //Scrolltest:
-   // scrollup(scrollcounter);
+   keyoutput.scrollup(scrollcounter);
    
   return 0;
 }
