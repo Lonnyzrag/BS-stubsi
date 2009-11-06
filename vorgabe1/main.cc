@@ -4,10 +4,21 @@
  CGA_Screen keyoutput;
  
 int main() {
+	int a,b = 0;
+	int scrollcounter=2;
+	
     keyoutput.show(5,0, (char)65, (unsigned char) 15);
-	keyoutput.setpos(10,12);
-	keyoutput.print ("Te", 2,  15);
+	
+	for (int i; i <= 25; i++){
+		keyoutput.setpos(a,b);
+		keyoutput.print ("Eike, eIke, eiKe, eikE", 22,  15);
+		a++;
+		b=b+3;
+	}
 	//print (char* 'Dies ist ein Text!',(int) 18, (unsigned char) 15){
+   
+   //Scrolltest:
+   // scrollup(scrollcounter);
    
   return 0;
 }

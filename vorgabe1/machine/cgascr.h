@@ -64,6 +64,8 @@ public:
    * The new row at the bottom of the screen has to be empty (filled with spaces).
    */
   /* ToDo: insert sourcecode */ 
+  void scrollup();
+  void scrollup(int);
 };
 
 #endif
