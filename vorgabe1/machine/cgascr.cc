@@ -93,8 +93,8 @@ void CGA_Screen::print (char* text, int length, unsigned char attrib){
  */
 void CGA_Screen::scrollup(){
 	// aus der show Methode: verschiebung = (y * spalte + x) * 2
-	for (int i = spalte*2; i<=spalte*zeile*2; i++)
-		grakaspeicher[i-(spalte*2)] = grakaspeicher[i];
+	for (int i = spalte; i<=spalte*zeile; i++)
+		grakaspeicher[i-(spalte)] = grakaspeicher[i];
 }
 void CGA_Screen::scrollup(int anzahl){	
 	for (int i = 0; i <= anzahl; i++){
