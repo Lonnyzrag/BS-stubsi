@@ -89,6 +89,16 @@ void CGA_Screen::print (char* text, int length, unsigned char attrib){
 			}
 		} 
 	}
-//void CGA_Screen::scrollup(int anzahl);
-	
 }
+
+/* Idee zum Scrollup:  	scrollup() verschiebt das ganze standardmäßig eine Zeile nach oben;
+ * 						die überlagerte Fkt. scrollup(anzahl) führ das ganze 
+ * 						durch eine Schleife für 'anzahl' Zeilen aus;
+void CGA_Screen::scrollup(){
+}
+void CGA_Screen::scrollup(int anzahl){	
+	for (int i = 0; i <= anzahl; i++){
+	scrollup();
+	}	
+}
+*/
