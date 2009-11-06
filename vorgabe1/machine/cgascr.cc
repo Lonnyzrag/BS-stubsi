@@ -26,13 +26,21 @@ void CGA_Screen::show (int x, int y, char c, unsigned char attrib){
     grakaoffset [verschiebung + 1] = attrib;    // attrib in ungerade Adresse schreiben
 }
 
-/*
-void CGA_Screen::setpos (int x, int y){
-    int cursorpos;						// Cursorpos Variable
 
-    indexreg.outb(14);					//
+void CGA_Screen::setpos (int x, int y){
+
+	int cursorpos = y * spalte + x;			// Berechnung des Offsets
+
+    indexreg.outb(14);					// IndexRegister auf Port 14 setzen
+	int puffer_1 = cursorpos & 0xff;
+	datareg.outb(puffe_1);				// ersten Teil schreiben
+
+	indexreg.outb(15);					//IndexRegister auf Port 15 setzen
+	int puffer_2 = (pos & 0x3f00) >> 8;	//Inhalten nach rechts shiften um auf den 2. teil zuzugreifen
+	datareg.outb(puffer_2);				// zweiten Teil schreiben
+
 }
-*/
+
 
 
 void CGA_Screen::getpos (int &x, int &y){
