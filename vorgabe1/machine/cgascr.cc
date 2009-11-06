@@ -33,10 +33,10 @@ void CGA_Screen::setpos (int x, int y){
 
     indexreg.outb(14);					// IndexRegister auf Port 14 setzen
 	int puffer_1 = cursorpos & 0xff;
-	datareg.outb(puffe_1);				// ersten Teil schreiben
+	datareg.outb(puffer_1);				// ersten Teil schreiben
 
 	indexreg.outb(15);					//IndexRegister auf Port 15 setzen
-	int puffer_2 = (pos & 0x3f00) >> 8;	//Inhalten nach rechts shiften um auf den 2. teil zuzugreifen
+	int puffer_2 = (cursorpos & 0x3f00) >> 8;	//Inhalten nach rechts shiften um auf den 2. teil zuzugreifen
 	datareg.outb(puffer_2);				// zweiten Teil schreiben
 
 }
