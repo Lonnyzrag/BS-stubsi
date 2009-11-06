@@ -70,16 +70,21 @@ void CGA_Screen::print (char* text, int length, unsigned char attrib){
 		x = 0;
 		
     for ( int i = 0; i < length; i++ ){
-		if ( x >= maxspalte ) {
-			x=0;  
+		if ( x >= maxspalte ) {   // wenn Zeichen rechts außerhalb d. Bildschirms
+			x=0;  				  // Zeilenumbruch
 			y++;
 		} else {
 			if ( x >= 0 && x < spalte && y >= 0 && y < zeile ){
-				show (x, y, text[i], attrib);
-				x++;
-				setpos(x,y);
-			}else {
-				show(79, 0, '$', 15);
+				/* hier fehlt noch die Reaktion auf \n
+				 * Versuch:
+				 * if (text[i] == '/' && text[i+1] == n) {
+						 * x=0; y++; i=i+2;} else {  //else schließen nicht vergessen!
+					*/
+					show (x, y, text[i], attrib);	// Zeichen an Pos schreiben
+					x++;			// ein zeichen weiter rücken
+					setpos(x,y);	// neue Position setzen
+			}else {						// falls y > Zeilen Sonderzeichen ausgeben
+				show(79, 0, '$', 15);		
 			}
 		} 
 	}
