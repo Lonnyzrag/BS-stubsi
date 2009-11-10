@@ -6,13 +6,7 @@
 int main() {
 	
 	//INITIALISIERUNG (Bildschirm clearen, Cursor setzen)
-	for (int i=0; i<=25; i++) {			//Spalte
-		for (int j=0; j<=80; j++) {		//Zeile
-			keyoutput.show(j,i, ' ', (unsigned char) 15);
-		}
-	}
-	keyoutput.setpos(0,0);
-			
+	keyoutput.clearscr();	
 	
 	
 	/*

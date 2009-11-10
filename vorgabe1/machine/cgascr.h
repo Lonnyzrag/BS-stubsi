@@ -66,6 +66,11 @@ public:
   /* ToDo: insert sourcecode */ 
   void scrollup();
   void scrollup(int);
+  
+  /**
+   * Method clearscr() clears the screen
+   */  
+  void clearscr();
 };
 
 #endif
