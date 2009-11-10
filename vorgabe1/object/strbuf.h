@@ -23,9 +23,9 @@
 class Stringbuffer {
 protected:
   /** buffer containing the characters of the Stringbuffer */
-  /* ToDo: insert sourcecode */ 
+  static const unsigned int buffersize = 16;   // Puffergröße = 16, da auch hex benötigt wird
   /** buffer pointer saving the position of the next insertion */
-  /* ToDo: insert sourcecode */ 
+  int aktpos;
 
   /** Default constructor of Stringbuffer setting the buffer empty. */
   /* ToDo: insert sourcecode */ 
