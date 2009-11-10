@@ -56,49 +56,53 @@ void CGA_Screen::getpos (int &x, int &y){
     y = cursorpos / spalte;             // bestimmen der Zeile
 } 
 
-void CGA_Screen::print (char* text, int length, unsigned char attrib){
-        // prüfen ob innerhalb der Grenzen
-        // getpos
-        // zeichen schreiben
-        // setpos (getpos+1)
-	int x, y;
-	getpos(x,y);
-	int maxspalte = spalte -1;
-	if ( y < 0 )
-		y = 0;
-	if ( x < 0 )
-		x = 0;
+void CGA_Screen::print (char* text, int length, unsigned char attrib) 
+{
+    int x, y;
+
+    for (int i=0; i<length; i++)	// fuer jedes Zeichen
+	{
+        getpos(x,y);				// Cursor-Position holen
 		
-    for ( int i = 0; i < length; i++ ){
-		if ( x >= maxspalte || text[i] == '\n' ) {   
-		// wenn Zeichen rechts außerhalb d. Bildschirms liegt oder Zeilenumbruch
-		// Achtung!!! lauf Marcus: \n ist als Steuerzeichen hinterlegt (char == 10 oder char =='\n')
-			x=0;  			// Zeilenanfang
-			y++;			// Zeilenumbruch
-		} 
-		if ( x >= 0 && x < spalte && y >= 0 && y < zeile ){
-					show (x, y, text[i], attrib);	// Zeichen an Pos schreiben
-					x++;			// ein zeichen weiter rücken
-					setpos(x,y);	// neue Position setzen
-			}else {						// falls y > Zeilen Sonderzeichen ausgeben
-				show(79, 0, '$', 15);		
-			}
-		 
-	}
+        if (text[i]!='\n') {		// wenn kein Zeilenumbruch zeige Zeichen
+            show(x, y, text[i], attrib); x++;
+		}
+        else {						// bei Zeilenumbruch Zeile+1
+            x=0;
+			y++;
+        }
+
+        if (x>79) {					// am Zeilenende Zeilenumbruch einfuegen
+            x = 0;
+			y++;
+        }
+        if (y>24) {					// schreiben ueber letzte Zeile hinaus
+            x=0;
+			y=24;
+            scrollup();
+        }
+		
+        setpos(x,y);				// Position setzen
+    }
+
 }
 
 /* Idee zum Scrollup:  	scrollup() verschiebt das ganze standardmäßig eine Zeile nach oben;
- * 						die überlagerte Fkt. scrollup(anzahl) führ das ganze 
- * 						durch eine Schleife für 'anzahl' Zeilen aus;
  */
-void CGA_Screen::scrollup(){
-	// aus der show Methode: verschiebung = (y * spalte + x) * 2
-	for (int i = spalte*2; i<=spalte*zeile; i++)
-		grakaspeicher[i-(spalte*2)] = grakaspeicher[i];
-}
-void CGA_Screen::scrollup(int anzahl){	
-	for (int i = 0; i <= anzahl; i++){
-	scrollup();
-	}	
+
+void CGA_Screen::scrollup()
+{
+    for(int y=0;y<25;y++)        // fuer Zeile 1-24 ersetze durch Zeichen 
+                                 // in naechster Zeile
+        for(int x=0;x<80;x++) {  // fuer Spalte 1-160 ersetze durch Zeichen 
+                                 // in Spalte drunter
+            
+			grakaspeicher[(2*(y*80+x))] = grakaspeicher[(2*((y+1)*80+x))];	// verschieben des inhalts
+			grakaspeicher[(2*(y*80+x))+1] = 0x0f;							// attribute leeren
+		}
+        
+    for(int x=0;x<80;x++)        // Zeile 25 mit Leerzeichen fuellen
+        show(x,24,' ',15);
+		//setpos(0,24);
 }
 
