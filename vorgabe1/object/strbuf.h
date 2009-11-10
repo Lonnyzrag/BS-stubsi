@@ -28,10 +28,12 @@ protected:
   int aktpos;
 
   /** Default constructor of Stringbuffer setting the buffer empty. */
-  /* ToDo: insert sourcecode */ 
+  Stringbuffer(aktpos){
+	  aktpos=0;
+	  }
 
   /** Default desctructor of Stringbuffer. Nothing has to be done here. */
-  /* ToDo: insert sourcecode */ 
+  ~Stringbuffer();
 
   /** 
    * Method put() inserts a character into the buffer. If the buffer is full 
@@ -40,7 +42,7 @@ protected:
    *
    * @param c character to be inserted into the buffer
    */
-  /* ToDo: insert sourcecode */ 
+  void put (char c);
 
   /**
    * Method flush() prints the curent content of the buffer. It is called 
@@ -49,7 +51,7 @@ protected:
    * To enalbe the Stringbuffer to work with different output mechanisms the
    * method has to be implemented in a subclass of Stringbuffer.
    */
-  /* ToDo: insert sourcecode */ 
+  void flush ();
 };
 
 #endif
