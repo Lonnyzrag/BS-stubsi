@@ -106,3 +106,14 @@ void CGA_Screen::scrollup()
 		//setpos(0,24);
 }
 
+void CGA_Screen::clearscr()
+{
+
+	for (int i=0; i<=25; i++) {			//Spalte
+		for (int j=0; j<=80; j++) {		//Zeile
+			show(j,i, ' ', (unsigned char) 15);
+		}
+	}
+	setpos(0,0);
+
+}
