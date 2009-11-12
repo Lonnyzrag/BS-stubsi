@@ -22,6 +22,6 @@ void Stringbuffer :: put (char c){
 }
 
 	
-virtual void flush(0);
+virtual void flush()=0;
     /* Verarbeitet die gesammelten Zeichen und schafft so Platz für neue Zeichen.
 	 * Die Implementierung der Methode soll jedoch erst in den abgeleiteten Klassen erfolgen. */

@@ -23,17 +23,17 @@
 class Stringbuffer {
 protected:
   /** buffer containing the characters of the Stringbuffer */
-  static const unsigned int buffersize = 16;   // Puffergröße = 16, da auch hex benötigt wird
+  static const unsigned int buffersize = 8; // Puffergröße festlegen
   /** buffer pointer saving the position of the next insertion */
-  int aktpos;
+  int aktpos;								// variable für die aktuelle Position initialisieren
 
   /** Default constructor of Stringbuffer setting the buffer empty. */
-  Stringbuffer(aktpos){
+  Stringbuffer(aktpos){			// Konstruktor und Vorbelegung von aktpos
 	  aktpos=0;
 	  }
 
   /** Default desctructor of Stringbuffer. Nothing has to be done here. */
-  ~Stringbuffer();
+  ~Stringbuffer();				// Destruktor; soll nichts machen
 
   /** 
    * Method put() inserts a character into the buffer. If the buffer is full 
@@ -42,7 +42,7 @@ protected:
    *
    * @param c character to be inserted into the buffer
    */
-  void put (char c);
+  void put (char c);			// Methode put
 
   /**
    * Method flush() prints the curent content of the buffer. It is called 
@@ -51,7 +51,7 @@ protected:
    * To enalbe the Stringbuffer to work with different output mechanisms the
    * method has to be implemented in a subclass of Stringbuffer.
    */
-  void flush ();
+  void flush ();				// Methode flush
 };
 
 #endif
