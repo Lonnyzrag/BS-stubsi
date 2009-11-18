@@ -9,3 +9,4 @@ parport.out
 tools/build/
 tools/build/*
 bochs/*
+vorgabe1/build/*
