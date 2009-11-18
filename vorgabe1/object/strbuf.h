@@ -28,7 +28,7 @@ protected:
   int aktpos;								// variable für die aktuelle Position initialisieren
 
   /** Default constructor of Stringbuffer setting the buffer empty. */
-  Stringbuffer(aktpos){			// Konstruktor und Vorbelegung von aktpos
+  Stringbuffer(int aktpos){			// Konstruktor und Vorbelegung von aktpos
 	  aktpos=0;
 	  }
 
