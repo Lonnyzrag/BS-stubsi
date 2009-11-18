@@ -17,5 +17,6 @@
     
 void CGA_Stream::flush ()
 {
-		//O_Stream.flush();
+	print(buffer, buffersize, 0x05);
+	aktpos=0;
 }

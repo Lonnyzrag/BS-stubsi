@@ -26,7 +26,7 @@ protected:
   static const unsigned int buffersize = 8; // Puffergröße festlegen
   char buffer[buffersize];
   /** buffer pointer saving the position of the next insertion */
-  int aktpos;								// variable für die aktuelle Position initialisieren
+  char* aktpos;								// Zeichen für Zeiger der aktuellen Position initialisieren
 
   /** Default constructor of Stringbuffer setting the buffer empty. */
   Stringbuffer():aktpos(0) {}			// Konstruktor
