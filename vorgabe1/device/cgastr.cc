@@ -8,7 +8,13 @@
 
 #include "device/cgastr.h"
 
-/* ToDo: insert sourcecode */ 
+  /**
+   * Mit dieser Methode sollen die gesammelten Zeichen verarbeitet
+   * und so Platz für neue Zeichen geschaffen werden.
+   * Die Implementierung der Methode soll jedoch erst in den
+   * abgeleiteten Klassen erfolgen.
+   */
+    
 void CGA_Stream::flush ()
 {
 		//O_Stream.flush();
