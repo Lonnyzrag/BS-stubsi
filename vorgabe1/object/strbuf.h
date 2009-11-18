@@ -50,7 +50,7 @@ protected:
    * To enalbe the Stringbuffer to work with different output mechanisms the
    * method has to be implemented in a subclass of Stringbuffer.
    */
-  virtual void flush ();				// Methode flush
+  virtual void flush ();				// virtuelle Methode flush aus CGA_Stream
 };
 
 #endif

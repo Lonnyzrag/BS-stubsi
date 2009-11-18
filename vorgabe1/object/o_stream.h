@@ -20,14 +20,18 @@
  * manipulators are defined. These manipulators are used to choose the basis 
  * for display of digits and to print the buffer after an endl.
  */
-class O_Stream   {
+class O_Stream  : public Stringbuffer {
 public:
   /** basis for display of digits eg. 2, 8, 10 or 16 */
-  /* ToDo: insert sourcecode */ 
-
+	int basis;					// Initialisierung der Basis
   /** Default constructor initialising with dezimal system */
-  /* ToDo: insert sourcecode */ 
-
+	O_Stream():Stringbuffer(){	// Konstruktor erstellt Stringbuffer Objekt
+		basis = 10;				// mit Basis = 10 (Dezimal)
+	}
+	
+	~O_Stream();				// Destruktor
+	
+	virtual void flush ();		// virtuelle Methode flush aus CGA_Stream
   /** 
    * Operator << overloading the default operator. Is used to convert
    * the given datatype into a string that can be printed on an output device.
@@ -39,7 +43,15 @@ public:
    * @return reference to the current O_Stream object.
    */
   O_Stream& operator << (char c);
-  /* ToDo: insert sourcecode */ 
+  O_Stream& operator<< (char c);
+  O_Stream& operator<< (unsigned short number);
+  O_Stream& operator<< (short number);
+  O_Stream& operator<< (unsigned int number);
+  O_Stream& operator<< (int number);
+  O_Stream& operator<< (unsigned long number);
+  O_Stream& operator<< (long number);
+  O_Stream& operator<< (void* pointer);
+  O_Stream& operator<< (char* text);
 
   /**
    * Operator << overloading the default operator is used to call defined 
@@ -65,13 +77,13 @@ public:
  * output (eg. by choosing a basis for the display of digits).
  */ 
 /** ENDL: prints buffer after adding a newline at the end of the buffer */
- 
+   O_Stream& endl (O_Stream& os);
 /** BIN: choose binary basis for display */
- 
+   O_Stream& bin (O_Stream& os);
 /** OCT: choose oktale basis for display */
- 
+   O_Stream& oct (O_Stream& os);
 /** DEC: choose dezimal basis for display */
- 
+   O_Stream& dec (O_Stream& os);
 /** HEX: choose hexadezimal basis for display */
- 
+   O_Stream& hex (O_Stream& os);
 #endif
