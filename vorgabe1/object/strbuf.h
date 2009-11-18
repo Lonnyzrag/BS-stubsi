@@ -24,15 +24,15 @@ class Stringbuffer {
 protected:
   /** buffer containing the characters of the Stringbuffer */
   static const unsigned int buffersize = 8; // Puffergröße festlegen
-  char buffer[16];
+  char buffer[buffersize];
   /** buffer pointer saving the position of the next insertion */
-  int aktpos=0;								// variable für die aktuelle Position initialisieren
+  int aktpos;								// variable für die aktuelle Position initialisieren
 
   /** Default constructor of Stringbuffer setting the buffer empty. */
-  Stringbuffer();			// Konstruktor
+  Stringbuffer():aktpos(0) {}			// Konstruktor
 
   /** Default desctructor of Stringbuffer. Nothing has to be done here. */
-  ~Stringbuffer();				// Destruktor; soll nichts machen
+  ~Stringbuffer() {}				// Destruktor; soll nichts machen
 
   /** 
    * Method put() inserts a character into the buffer. If the buffer is full 

@@ -3,6 +3,7 @@
  *---------------------------------------------------------------------------*
  *                                                                           *
  *                            O _ S T R E A M                                *
+ *                            O _ S T R E A M                                *
  *                                                                           *
  *---------------------------------------------------------------------------*/
 
@@ -40,17 +41,17 @@ O_Stream& O_Stream::operator << (unsigned long number){
     unsigned long div;
     char  digit;
 
-    if (base == 8 || base == 16)	//wenn oktal oder hexadezimal schreibe fuehrende Null
+    if (basis == 8 || basis == 16)	//wenn oktal oder hexadezimal schreibe fuehrende Null
         put ('0');
-    if (base == 16)					//wenn hexadezimal schreibe 'x'
+    if (basis == 16)					//wenn hexadezimal schreibe 'x'
         put('x');
 
 	//ermittle hoechste Potenz der Basis die <= der Zahl ist
     //und verwende diese als Teiler
-    for (div = 1; number/div >= (unsigned long) base; div *= base);
+    for (div = 1; number/div >= (unsigned long) basis; div *= basis);
 
     //solange der Teiler groesser 0 ist
-	for (; div > 0; div /= (unsigned long) base){
+	for (; div > 0; div /= (unsigned long) basis){
         digit = number/div;
         if (digit < 10)
             put('0'+digit);
@@ -86,10 +87,10 @@ O_Stream& O_Stream::operator << (short number){
 }
 
 O_Stream& O_Stream::operator << (void* pointer){
-    int oldbase=base;
-    base=16;
+    int oldbasis=basis;
+    basis=16;
     *this << (unsigned long) pointer;
-    base=oldbase;
+    basis=oldbasis;
     return *this;
 }
 
@@ -104,21 +105,21 @@ O_Stream& endl (O_Stream& os){
 }
 
 O_Stream& bin (O_Stream& os){
-    os.base=2;
+    os.basis=2;
     return os;
 }
 
 O_Stream& oct (O_Stream& os){
-    os.base=8;
+    os.basis=8;
     return os;
 }
 
 O_Stream& dec (O_Stream& os){
-    os.base=10;
+    os.basis=10;
     return os;
 }
 
 O_Stream& hex (O_Stream& os){
-    os.base=16;
+    os.basis=16;
     return os;
 }

@@ -29,7 +29,7 @@ public:
 		basis = 10;				// mit Basis = 10 (Dezimal)
 	}
 	
-	~O_Stream();				// Destruktor
+	//~O_Stream();				// Destruktor
 	
 	virtual void flush ();		// virtuelle Methode flush aus CGA_Stream
   /** 
@@ -43,15 +43,15 @@ public:
    * @return reference to the current O_Stream object.
    */
   O_Stream& operator << (char c);
-  O_Stream& operator<< (char c);
-  O_Stream& operator<< (unsigned short number);
-  O_Stream& operator<< (short number);
-  O_Stream& operator<< (unsigned int number);
-  O_Stream& operator<< (int number);
-  O_Stream& operator<< (unsigned long number);
-  O_Stream& operator<< (long number);
-  O_Stream& operator<< (void* pointer);
-  O_Stream& operator<< (char* text);
+  O_Stream& operator << (unsigned char c);
+  O_Stream& operator << (unsigned short number);
+  O_Stream& operator << (short number);
+  O_Stream& operator << (unsigned int number);
+  O_Stream& operator << (int number);
+  O_Stream& operator << (unsigned long number);
+  O_Stream& operator << (long number);
+  O_Stream& operator << (void* pointer);
+  O_Stream& operator << (char* text);
 
   /**
    * Operator << overloading the default operator is used to call defined 
