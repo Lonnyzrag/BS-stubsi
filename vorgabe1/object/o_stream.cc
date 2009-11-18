@@ -23,14 +23,9 @@ O_Stream& O_Stream::operator << (unsigned char c){
 }
 
 O_Stream& O_Stream::operator << (char* text){
-/*    char* pos = text;       //kopiert zeiger auf den Text/String
-    while (*pos){           // *pos laeuft solange wie nicht die 0-Terminierung gefunde wurde
-        put(*pos);          // *pos gibt Inhalt an der position pos zurueck
-        pos++;              //erhoeht zeiger
-    }
-*/
+
     int i = 0;
-    while (text[i]){		// solange text != '\0'
+    while (text[i]){		// solange true, false wenn kein zeichen, also text = '\0'
         put(text[i]);		// schreibe Zeichen in Buffer
         i++;
     }
@@ -41,9 +36,9 @@ O_Stream& O_Stream::operator << (unsigned long number){
     unsigned long div;
     char  digit;
 
-    if (basis == 8 || basis == 16)	//wenn oktal oder hexadezimal schreibe fuehrende Null
+    if (basis == 8 || basis == 16)	//wenn oktal oder hexadezimal schreibe fuehrende Null, hex: 0x....., okt 0.... laut wikipedia
         put ('0');
-    if (basis == 16)					//wenn hexadezimal schreibe 'x'
+    if (basis == 16)					//wenn hexadezimal schreibe 'x' wegen 0x bei hex
         put('x');
 
 	//ermittle hoechste Potenz der Basis die <= der Zahl ist
@@ -53,11 +48,15 @@ O_Stream& O_Stream::operator << (unsigned long number){
     //solange der Teiler groesser 0 ist
 	for (; div > 0; div /= (unsigned long) basis){
         digit = number/div;
+		
+		//für HEX, denn OCT kommt da nicht rein, da zwischen 0 und 7
+		//für A=10, B=11, ....
+				
         if (digit < 10)
             put('0'+digit);
         else
             put('a'+digit-10);
-        number %= div;
+        number = number % div;		//number %= div
     }
     return *this;
 }
@@ -85,8 +84,10 @@ O_Stream& O_Stream::operator << (unsigned short number){
 O_Stream& O_Stream::operator << (short number){
     return *this << (long) number;
 }
-
-O_Stream& O_Stream::operator << (void* pointer){
+												  
+												 //abfangen wenn pointer
+												 //0xPOINTERADRESSE weil pointeradresse in hex ausgegeben wird
+O_Stream& O_Stream::operator << (void* pointer){ //gibt 0x... aus, denn long wird mit der basis 16 ausgerufen, dessen teiler kleiner als 10, damit 0x0
     int oldbasis=basis;
     basis=16;
     *this << (unsigned long) pointer;
