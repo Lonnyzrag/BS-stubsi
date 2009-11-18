@@ -24,6 +24,7 @@ class Stringbuffer {
 protected:
   /** buffer containing the characters of the Stringbuffer */
   static const unsigned int buffersize = 8; // Puffergröße festlegen
+  char buffer[200];
   /** buffer pointer saving the position of the next insertion */
   int aktpos;								// variable für die aktuelle Position initialisieren
 
@@ -51,7 +52,7 @@ protected:
    * To enalbe the Stringbuffer to work with different output mechanisms the
    * method has to be implemented in a subclass of Stringbuffer.
    */
-  void flush ();				// Methode flush
+  virtual void flush ();				// Methode flush
 };
 
 #endif

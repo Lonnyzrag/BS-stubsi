@@ -21,7 +21,6 @@ void Stringbuffer :: put (char c){
     aktpos++;					// index für das nächste Zeichen erhöhen
 }
 
-	
-virtual void flush()=0;
+
     /* Verarbeitet die gesammelten Zeichen und schafft so Platz für neue Zeichen.
 	 * Die Implementierung der Methode soll jedoch erst in den abgeleiteten Klassen erfolgen. */
